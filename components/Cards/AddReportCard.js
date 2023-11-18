@@ -133,8 +133,10 @@ export default () => {
     try {
       const contract = await createHTContract();
       const doc = await contract.doctors(address);
+      console.log(address);
+      console.log(doc);
       if (doc[0] == "0x0000000000000000000000000000000000000000") {
-        handleErrors("", "Only doctor can add medical report");
+        handleErrors("", "Only doctor in question can add medical report");
         return;
       }
       const allMembers = await contract.reportCount();
@@ -163,8 +165,8 @@ export default () => {
 
     try {
       const contract = await createHTContract();
+      console.log(reportID);
       const report = await contract.medicalReports(Number(reportID));
-
       const doc = await contract.doctors(address);
 
       if (doc[0].toLowerCase() != address.toLowerCase()) {
@@ -205,6 +207,7 @@ export default () => {
 
   const handleChange = (event) => {
     setReportID(event.target.value);
+    // getPatientCondition();
     setSummary("");
     setPatientCondition("");
     setPervSummary("");

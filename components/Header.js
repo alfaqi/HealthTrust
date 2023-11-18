@@ -116,7 +116,9 @@ export default () => {
           Manage
         </Link>
       )}
-      <w3m-button />
+      <div className="hidden">
+        <w3m-button />
+      </div>
     </nav>
   );
 };

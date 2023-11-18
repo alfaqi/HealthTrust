@@ -4,6 +4,7 @@ import AddReportCard from "../../components/Cards/AddReportCard";
 import GetMRbyPatient from "../../components/Cards/GetMRbyPatient";
 import { createHTContract } from "../../Constants/contractUtils";
 import { useRouter } from "next/router";
+import Chat from "../../components/Chat/Chat";
 
 export default () => {
   const [value, setValue] = useState(0);
@@ -36,6 +37,7 @@ export default () => {
     };
   }
   const [patientMode, setPatientMode] = useState(true);
+  const [address, setAddress] = useState("");
   const router = useRouter();
   const handleGetAllMembers = async (address) => {
     setPatientMode(true);
@@ -46,6 +48,7 @@ export default () => {
       for (let i of reportCount) {
         if (i.toLowerCase() == address.toLowerCase()) {
           setPatientMode(false);
+          setAddress(address);
           break;
         }
       }
@@ -72,13 +75,15 @@ export default () => {
             aria-label="basic tabs example"
           >
             <Tab className="text-white" label="View Report" {...a11yProps(0)} />
-
             {!patientMode && (
               <Tab
                 className="text-white"
                 label="Add Medical Report"
                 {...a11yProps(1)}
               />
+            )}
+            {!patientMode && (
+              <Tab className="text-white" label="Chats" {...a11yProps(2)} />
             )}
           </Tabs>
         </Box>
@@ -87,9 +92,14 @@ export default () => {
           <GetMRbyPatient />
         </CustomTabPanel>
         {!patientMode && (
-          <CustomTabPanel value={value} index={1}>
-            <AddReportCard />
-          </CustomTabPanel>
+          <>
+            <CustomTabPanel value={value} index={1}>
+              <AddReportCard />
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={2}>
+              <Chat sender={address} />
+            </CustomTabPanel>
+          </>
         )}
       </Box>
     </div>

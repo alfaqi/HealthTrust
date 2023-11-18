@@ -5,9 +5,6 @@ import { createHTContractIPFS } from "../../Constants/contractUtils";
 import { useState } from "react";
 import { CloudUpload } from "@mui/icons-material";
 
-import dotenv from "dotenv";
-dotenv.config();
-
 const token = process.env.NEXT_PUBLIC_WEB3_STORAGE_API_TOKEN;
 const client = new Web3Storage({ token });
 

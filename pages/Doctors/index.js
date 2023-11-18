@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { createHTContract } from "../../Constants/contractUtils";
 import SkeletonImageModal from "../../components/Modals/SkeletonImageModal";
+import Chat from "../../components/Chat/Chat";
 
 export default () => {
   // const doctor = [
@@ -19,6 +20,8 @@ export default () => {
   const router = useRouter();
   const [doctor, setDoctor] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [chat, setChat] = useState(false);
+  const [address, setAddress] = useState("");
 
   const checkDoctor = async (AccountAddress) => {
     try {
@@ -40,8 +43,19 @@ export default () => {
 
   useEffect(() => {
     const { id } = router.query;
+    console.log(id);
+    if (!id) {
+      // alert(
+      //   "Sorry, no doctor was found with this address. Please ensure it's correct and try again."
+      // );
+      router.push("/Register");
+      return;
+    }
+    const AccountAddress = localStorage.getItem("AccountAddress");
+    setAddress(AccountAddress);
+
     checkDoctor(id);
-  }, [router.query.id]);
+  }, []);
   return (
     <div className="container h-screen">
       <div className="w-[300] h-[500] flex justify-center">
@@ -67,15 +81,18 @@ export default () => {
               <p> {doctor[1]}</p>
             </div>
             <div className="flex flex-row justify-center p-1 m-1">
-              <Button className="m-1 p-3 bg-slate-200 hover:bg-slate-400">
+              <Button
+                onClick={() => setChat(!chat)}
+                className="m-1 p-3 bg-slate-200 hover:bg-slate-400"
+              >
                 <Message />
+              </Button>
+              <Button className="m-1 p-3 bg-slate-200 hover:bg-slate-400">
+                <VideoCall />
               </Button>
             </div>
             <div>
               <div className="flex ">
-                <Button className="m-1 p-3 bg-slate-200 hover:bg-slate-400">
-                  <VideoCall />
-                </Button>
                 <Link
                   className="w-96 p-3 m-1 text-center Primary__Click"
                   href={`/Register/Register?id=${doctor[0]}`}
@@ -101,6 +118,7 @@ export default () => {
           </div>
         )}
       </div>
+      {chat && <Chat sender={address} receiver={doctor[0]} />}
     </div>
   );
 };

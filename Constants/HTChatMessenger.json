@@ -106,6 +106,27 @@
     "signature": "0xab75043d"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "getChatsForUser",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true,
+    "signature": "0x683b9024"
+  },
+  {
     "inputs": [],
     "name": "owner",
     "outputs": [

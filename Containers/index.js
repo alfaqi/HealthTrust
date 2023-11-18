@@ -29,7 +29,7 @@ export default () => {
     router.push("/Account/Check");
   };
   return (
-    <main>
+    <div>
       <div className="absolute">
         <Image
           loader={() => "/background.jpg"}
@@ -71,6 +71,6 @@ export default () => {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 };

@@ -11,7 +11,7 @@ export const HealthTrustAddress = "0xC359681269Fbcb90da069Fd88FC3D42c58168031"; 
 export const IPFSHashesAddress = "0xb89a1Df0E13AEf94B1260c7749174469BC6EcD88"; // Toronet Testnet
 
 export const HTChatMessengerAddress =
-  "0x185954cF2F089904C3e7d113EF21344C2fdfaab8"; // Toronet Testnet
+  "0xE402962b7c651bFE9B6269323Ca7c72e0E169b97"; // Toronet Testnet
 
 // Toronet wallet
 export const adminAddress = "0xfb29a4e3a100fbafd368f2a74e907cf4e276e10f";
