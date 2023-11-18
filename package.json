@@ -1,0 +1,39 @@
+{
+  "name": "healthtrustplatform",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@livepeer/react": "^3.0.4",
+    "@mui/icons-material": "^5.14.18",
+    "@mui/material": "^5.14.17",
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "@web3modal/wagmi": "^3.1.0",
+    "autoprefixer": "10.4.14",
+    "axios": "^1.6.1",
+    "dotenv": "^16.3.1",
+    "ethers": "^6.8.0",
+    "hardhat": "^2.18.3",
+    "headroom.js": "^0.12.0",
+    "jspdf": "^2.5.1",
+    "lottie-react": "^2.3.0",
+    "next": "13.4.4",
+    "postcss": "8.4.24",
+    "react": "18.2.0",
+    "react-awesome-reveal": "^4.2.5",
+    "react-blockies": "^1.4.1",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.3.2",
+    "viem": "^1.16.6",
+    "wagmi": "^1.4.5",
+    "web3.storage": "^4.5.5"
+  }
+}
