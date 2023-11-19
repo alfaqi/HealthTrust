@@ -92,6 +92,11 @@ export default () => {
       <Link className="mr-4 p-4" href="/Reports">
         Reports
       </Link>
+      {adminMode && (
+        <Link className="mr-4 p-4" href="/Manage">
+          Manage
+        </Link>
+      )}
       {address && (
         <div>
           <Button
@@ -122,11 +127,7 @@ export default () => {
           </Menu>
         </div>
       )}
-      {adminMode && (
-        <Link className="mr-4 p-4" href="/Manage">
-          Manage
-        </Link>
-      )}
+
       <div className="hidden">
         <w3m-button />
       </div>

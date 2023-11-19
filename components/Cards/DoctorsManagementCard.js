@@ -11,6 +11,7 @@ import {
   Select,
 } from "@mui/material";
 import { createHTContract } from "../../Constants/contractUtils";
+import { Save } from "@mui/icons-material";
 
 export default () => {
   const [action, setAction] = useState("add");
@@ -190,17 +191,11 @@ export default () => {
             </Select>
           </FormControl>
           <Button
-            disabled={isLoading}
+            className="mt-2 p-3 bg-slate-200 hover:bg-slate-400"
             onClick={handleConfirm}
-            className="w-72 p-2 mt-4 button "
+            disabled={isLoading}
           >
-            <div>
-              {isLoading ? (
-                "Wait..."
-              ) : (
-                <p className="font-bold text-black">Confirm</p>
-              )}
-            </div>
+            <Save />
           </Button>
           <Button
             onClick={handleGetAllMembers}

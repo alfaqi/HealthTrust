@@ -18,7 +18,7 @@ import {
   createHTContract,
 } from "../../Constants/contractUtils";
 import { transferAmount } from "../../Constants/APIsCalls";
-import { Search } from "@mui/icons-material";
+import { Save, Search } from "@mui/icons-material";
 
 export default () => {
   const [address, setAddress] = useState();
@@ -364,15 +364,11 @@ export default () => {
                 onChange={(e) => setSummary(e.target.value)}
               />
               <Button
-                disabled={!summary}
+                className="mt-2 p-3 bg-slate-200 hover:bg-slate-400"
                 onClick={handleConfirm}
-                className="w-72 p-2 mt-2 font-bold text-black button"
+                disabled={isLoading}
               >
-                {isLoading ? (
-                  "Wait..."
-                ) : (
-                  <p className="font-bold text-black">Confirm</p>
-                )}
+                <Save />
               </Button>
             </>
           )}
