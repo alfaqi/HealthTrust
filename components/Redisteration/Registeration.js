@@ -69,7 +69,7 @@ export default () => {
 
     const balance = await getBalance(patientAddress);
 
-    if (balance.data.balance < doctor[2].toString()) {
+    if (Number(balance.data.balance) < Number(doctor[2])) {
       handleErrors(
         "",
         "You don't have sufficient funds to proceed with this action."
