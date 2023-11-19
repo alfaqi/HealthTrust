@@ -12,7 +12,7 @@ export const getBalance = async (addr) => {
   let output;
 
   await axios
-    .get("http://testnet.toronet.org/api/token/toro/", {
+    .get("https://testnet.toronet.org/api/token/toro/", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -41,7 +41,7 @@ export const transferAmount = async (from, to, pwd, amount) => {
   let output;
 
   await axios
-    .post("http://testnet.toronet.org/api/token/toro/cl", data, {
+    .post("https://testnet.toronet.org/api/token/toro/cl", data, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -64,7 +64,7 @@ export const createNewAccount = async (PWD) => {
   let output;
 
   await axios
-    .post("http://testnet.toronet.org/api/keystore", data, {
+    .post("https://testnet.toronet.org/api/keystore", data, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -91,7 +91,7 @@ export const changePWD = async (addr, oldPassword, newPassword) => {
   let output;
 
   await axios
-    .post("http://testnet.toronet.org/api/keystore", data, {
+    .post("https://testnet.toronet.org/api/keystore", data, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -116,7 +116,7 @@ export const verifyKey = async (addr, password) => {
   let output;
 
   await axios
-    .get("http://testnet.toronet.org/api/keystore/", {
+    .get("https://testnet.toronet.org/api/keystore/", {
       headers: {
         "Content-Type": "application/json",
       },
