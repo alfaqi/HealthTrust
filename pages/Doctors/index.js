@@ -56,8 +56,13 @@ export default () => {
 
     checkDoctor(id);
   }, []);
+
+  const handleGotoLive = () => {
+    router.push(`/Live/Live?id=${doctor[0]}`);
+  };
+
   return (
-    <div className="container h-screen">
+    <div className="container h-full">
       <div className="w-[300] h-[500] flex justify-center">
         {isLoading ? (
           <div className="flex flex-col">
@@ -87,7 +92,10 @@ export default () => {
               >
                 <Message />
               </Button>
-              <Button className="m-1 p-3 bg-slate-200 hover:bg-slate-400">
+              <Button
+                onClick={handleGotoLive}
+                className="m-1 p-3 bg-slate-200 hover:bg-slate-400"
+              >
                 <VideoCall />
               </Button>
             </div>

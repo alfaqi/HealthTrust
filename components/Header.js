@@ -3,8 +3,9 @@ import Headroom from "headroom.js";
 import { useContext, useEffect, useState } from "react";
 import { createHTContract } from "../Constants/contractUtils";
 import { useRouter } from "next/router";
-import { Button, Menu, MenuItem } from "@mui/material";
+import { Button, Divider, Menu, MenuItem } from "@mui/material";
 import { ContractContext } from "../Constants/ContractContext";
+import { OpenInNew } from "@mui/icons-material";
 
 export default () => {
   const router = useRouter();
@@ -53,6 +54,12 @@ export default () => {
     }
   };
 
+  const handleToroWallet = () => {
+    handleClose();
+    window.open(
+      `https://testnet.toronet.org/wallet/dashboard.html?addr=${address}`
+    );
+  };
   const handleMyAccount = () => {
     handleClose();
     router.push("/Account/AccountMgmt");
@@ -108,6 +115,10 @@ export default () => {
           >
             <MenuItem onClick={handleMyAccount}>My account</MenuItem>
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            <Divider />
+            <MenuItem onClick={handleToroWallet}>
+              Open in ToroWallet {<OpenInNew />}
+            </MenuItem>
           </Menu>
         </div>
       )}

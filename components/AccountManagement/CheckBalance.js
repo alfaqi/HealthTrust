@@ -52,7 +52,7 @@ export default () => {
 
   return (
     <Grow in={true} style={{ transformOrigin: "0 0 0" }} timeout={1000}>
-      <div className="container  h-screen">
+      <div className="container h-screen">
         {errorMessage && (
           <Alert onClose={() => setErrorMessage("")} severity="error">
             {errorMessage}
@@ -60,7 +60,7 @@ export default () => {
         )}
         <div className="flex flex-row items-center justify-center gap-2 p-2 m-2">
           <div className="flex flex-col p-2 m-2">
-            <EnsAvatar address={address} size={100} />
+            <EnsAvatar address={address} size={150} />
           </div>
           <div className="flex flex-col p-2 m-2">
             <Input

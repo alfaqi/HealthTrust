@@ -95,7 +95,7 @@ export default () => {
     }, 2000);
   }, [errorMessage, successMessage]);
   return (
-    <div className="container">
+    <div className="container h-screen">
       {errorMessage && (
         <Alert
           className="p-2 m-2"

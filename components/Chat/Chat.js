@@ -77,7 +77,7 @@ export default ({ sender, receiver }) => {
     getChatHistory(receiver);
   };
   return (
-    <div className="App">
+    <div className="App h-screen">
       <div className="flex flex-row">
         <div>
           {!receiver && (
@@ -103,7 +103,7 @@ export default ({ sender, receiver }) => {
 
           <header>
             <div className="flex flex-col gap-2">
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2 items-center">
                 <EnsAvatar
                   address={receiver ? receiver : receiver2}
                   size={30}
@@ -140,7 +140,8 @@ export default ({ sender, receiver }) => {
 function ChatMessage({ message }) {
   const { content, sender, receiver } = message;
   const AccountAddress = localStorage.getItem("AccountAddress");
-  const messageClass = sender === AccountAddress ? "sent" : "received";
+  const messageClass =
+    sender.toLowerCase() === AccountAddress.toLowerCase() ? "sent" : "received";
 
   return (
     <div className={`message ${messageClass}`}>

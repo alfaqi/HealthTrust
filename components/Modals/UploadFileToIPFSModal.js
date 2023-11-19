@@ -17,23 +17,19 @@ export default ({ address, recordId, uploadFile }) => {
   async function uploadToIPFS() {
     try {
       setWaiting(true);
-      console.log("uploading new file");
       const blob = new Blob([uploadFile], { type: "application/pdf" });
-
-      console.log(blob);
 
       const cid = await client.put([blob], {
         wrapWithDirectory: false,
       });
-      console.log(`${prefix}${cid}${suffix}`);
 
       const contract = await createHTContractIPFS();
-      console.log(address.toString(), recordId, `${prefix}${cid}${suffix}`);
-      await contract.addToIPFS(
+      const tx = await contract.addToIPFS(
         address.toString(),
         recordId,
         `${prefix}${cid}${suffix}`
       );
+      await tx.wait();
       setWaiting(false);
     } catch (error) {
       console.log(error);

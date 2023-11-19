@@ -5,6 +5,7 @@ import GetMRbyPatient from "../../components/Cards/GetMRbyPatient";
 import { createHTContract } from "../../Constants/contractUtils";
 import { useRouter } from "next/router";
 import Chat from "../../components/Chat/Chat";
+import LiveMgmt from "../../components/LiveComp/LiveMgmt";
 
 export default () => {
   const [value, setValue] = useState(0);
@@ -66,14 +67,10 @@ export default () => {
   }, []);
 
   return (
-    <div className="w-[60vw] h-[100vh] flex flex-col items-center mx-auto">
+    <div className="w-[60vw] h-full flex flex-col items-center mx-auto">
       <Box sx={{ width: "100%" }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
-          >
+          <Tabs value={value} onChange={handleChange} aria-label="reports tabs">
             <Tab className="text-white" label="View Report" {...a11yProps(0)} />
             {!patientMode && (
               <Tab
@@ -84,6 +81,13 @@ export default () => {
             )}
             {!patientMode && (
               <Tab className="text-white" label="Chats" {...a11yProps(2)} />
+            )}
+            {!patientMode && (
+              <Tab
+                className="text-white"
+                label="Livestreams"
+                {...a11yProps(3)}
+              />
             )}
           </Tabs>
         </Box>
@@ -98,6 +102,9 @@ export default () => {
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
               <Chat sender={address} />
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={3}>
+              <LiveMgmt />
             </CustomTabPanel>
           </>
         )}

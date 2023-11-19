@@ -35,14 +35,10 @@ export default () => {
     };
   }
   return (
-    <div className="w-[60vw] h-[100vh] flex flex-col items-center mx-auto">
+    <div className="w-[60vw] h-full flex flex-col items-center mx-auto">
       <Box sx={{ width: "100%" }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
-          >
+          <Tabs value={value} onChange={handleChange} aria-label="manage tabs">
             <Tab
               className="text-white"
               label="Admins Management"

@@ -92,15 +92,18 @@ export default () => {
 
         <div className="flex flex-row items-center justify-center gap-2 p-2 m-2">
           <div className="flex flex-col p-2 m-2">
+            <EnsAvatar address={address} size={150} />
+          </div>
+          <div className="flex flex-col p-2 m-2">
             <Input
-              className="w-80 p-2"
+              className="w-80 p-2 m-2"
               type="text"
               placeholder="From..."
               value={address}
               onChange={(e) => setAddress(e.target.value)}
             />
             <Input
-              className="w-80 p-2"
+              className="w-80 p-2 m-2"
               type="text"
               placeholder="To..."
               value={address2}
@@ -108,14 +111,14 @@ export default () => {
             />
 
             <Input
-              className="w-80 p-2"
+              className="w-80 p-2 m-2"
               type="password"
               placeholder="Your password..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <Input
-              className="w-80 p-2"
+              className="w-80 p-2 m-2"
               type="text"
               placeholder="Amount..."
               value={amount}
@@ -130,9 +133,6 @@ export default () => {
                 <MoveDown />
               </Button>
             </div>
-          </div>
-          <div className="flex flex-col p-2 m-2">
-            <EnsAvatar address={address} size={150} />
           </div>
         </div>
       </div>

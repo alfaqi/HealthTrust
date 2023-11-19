@@ -228,7 +228,7 @@ export default () => {
     setAddress(AccountAddress);
   }, []);
   return (
-    <div className="container h-full">
+    <div className="container h-screen">
       {errorMessage && (
         <Alert
           className="p-2 m-2"

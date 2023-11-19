@@ -112,7 +112,7 @@ export default () => {
   }, []);
 
   return (
-    <div className="container w-[50vw]">
+    <div className="container w-[50vw] h-screen">
       {errorMessage && (
         <Alert
           className="p-2 m-2"
