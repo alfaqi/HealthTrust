@@ -17,7 +17,7 @@ export default () => {
 
   const [doctor, setDoctor] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-
+  const [waiting, setWaiting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -66,7 +66,7 @@ export default () => {
       handleErrors("", "you must agree for paying to doctor");
       return;
     }
-
+    setWaiting(true);
     const balance = await getBalance(patientAddress);
 
     if (Number(balance.data.balance) < Number(doctor[2])) {
@@ -97,7 +97,7 @@ export default () => {
       const tx = await contract.requestMedicalReport(
         patientAddress,
         doctor[0],
-        new Date(dateOfBirth) / 1000,
+        Math.round(new Date(dateOfBirth) / 1000),
         feeling,
         doctor[2]
       );
@@ -105,8 +105,11 @@ export default () => {
       setSuccessMessage("Medical report requested successfully!");
       setFeeling("");
       setAgree(false);
+      setWaiting(false);
     } catch (error) {
       handleErrors(error);
+    } finally {
+      setWaiting(false);
     }
   };
 
@@ -201,6 +204,7 @@ export default () => {
               <Button
                 className="w-52 m-2 p-3 bg-slate-200 hover:bg-slate-400"
                 onClick={handleRegister}
+                disabled={waiting}
               >
                 <p className="font-bold text-black">Register</p>
               </Button>

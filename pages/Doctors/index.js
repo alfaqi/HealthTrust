@@ -58,7 +58,7 @@ export default () => {
   }, []);
 
   const handleGotoLive = () => {
-    router.push(`/Live/Live?id=${doctor[0]}`);
+    window.open(`/Live/Live?id=${doctor[0]}`, "_blank");
   };
 
   return (
