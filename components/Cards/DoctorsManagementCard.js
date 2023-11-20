@@ -139,7 +139,7 @@ export default () => {
           <Input
             className="w-80 p-2 mt-4"
             type="text"
-            placeholder="Enter doctor address..."
+            placeholder="Doctor address..."
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
@@ -149,14 +149,14 @@ export default () => {
                 <Input
                   className="w-80 p-2 mt-4"
                   type="text"
-                  placeholder="Enter doctor's specialty..."
+                  placeholder="Doctor's specialty..."
                   value={specialty}
                   onChange={(e) => setSpecialty(e.target.value)}
                 />
                 <Input
                   className="w-80 p-2 mt-4"
                   type="text"
-                  placeholder="Enter doctor's rate..."
+                  placeholder="Doctor's rate..."
                   value={rating}
                   onChange={(e) => setRating(e.target.value)}
                 />
@@ -165,14 +165,14 @@ export default () => {
                 <Input
                   className="w-80 p-2 mt-4"
                   type="text"
-                  placeholder="Enter doctor's price per session..."
+                  placeholder="Doctor's price per session..."
                   value={perSession}
                   onChange={(e) => setPerSession(e.target.value)}
                 />
                 <Input
                   className="w-80 p-2 mt-4"
                   type="text"
-                  placeholder="Enter doctor's time availablity..."
+                  placeholder="Doctor's time availablity..."
                   value={timeAvailablity}
                   onChange={(e) => setTimeAvailablity(e.target.value)}
                 />

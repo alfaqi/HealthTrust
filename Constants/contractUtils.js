@@ -19,7 +19,7 @@ export const HTLivestreamAddress = "0x0f2bc42F45CD95d10AB3a93aC3C31f32451DBc4c";
 // Toronet wallet Addresses
 export const adminAddress = "0xfb29a4e3a100fbafd368f2a74e907cf4e276e10f";
 
-// 1-0
+// toronet
 export const WalletForContract = "0xf5664df82321cab6591ee267cd9ab53f2369692d";
 export const WalletForContractPWD = "1234567890";
 

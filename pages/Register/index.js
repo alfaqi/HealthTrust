@@ -40,8 +40,6 @@ export default () => {
       router.push("/Account");
       return;
     }
-    // setAddress(AccountAddress);
-    // handleGetAllMembers();
   }, []);
   return (
     <div className="w-[60vw] h-full flex flex-col items-center mx-auto">
@@ -57,14 +55,10 @@ export default () => {
               label="Select doctor"
               {...a11yProps(0)}
             />
-            {/* <Tab className="text-white" label="All Doctors" {...a11yProps(1)} /> */}
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
           <AllDoctors />
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}>
-          {/* <DoctorsBySpecialization /> */}
         </CustomTabPanel>
       </Box>
     </div>

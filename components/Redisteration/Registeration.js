@@ -77,10 +77,8 @@ export default () => {
       return;
     }
 
-    const contract = await createHTContract();
     try {
-      // const doctor = await contract.doctors(doctor[0]);
-
+      const contract = await createHTContract();
       const tr = await transferAmount(
         patientAddress,
         WalletForContract,
@@ -196,7 +194,7 @@ export default () => {
                 onChange={(e) => setAgree(e.target.checked)}
               />
               <p className="py-1">
-                You agree to pay <b>{doctor[2]?.toString()} Tọ̀rọ̀</b> to the
+                I'm agree to pay <b>{doctor[2]?.toString()} Tọ̀rọ̀</b> to the
                 doctor.
               </p>
             </div>

@@ -47,16 +47,6 @@ export default () => {
       setErrorMessage(
         "MetaMask Tx Signature: User denied transaction signature"
       );
-    } else if (
-      error.message
-        .toLowerCase()
-        .includes("only doctors can perform this action")
-    ) {
-      setErrorMessage("Only doctors can perform this action!");
-    } else if (
-      error.message.toLowerCase().includes("only patient or doctor can")
-    ) {
-      setErrorMessage("Only the doctor in question can view!");
     } else {
       setErrorMessage("Error occurred while processing.");
     }
@@ -115,7 +105,6 @@ export default () => {
       await tx.wait();
       setSuccessMessage("Successfully done!");
       setIsLoading(false);
-      // getAllReports();
       getPatientCondition();
     } catch (error) {
       handleErrors(error);
@@ -136,7 +125,10 @@ export default () => {
       console.log(address);
       console.log(doc);
       if (doc[0] == "0x0000000000000000000000000000000000000000") {
-        handleErrors("", "Only doctor in question can add medical report");
+        handleErrors(
+          "",
+          "Only the doctor involved can add the medical report."
+        );
         return;
       }
       const allMembers = await contract.reportCount();
@@ -165,7 +157,6 @@ export default () => {
 
     try {
       const contract = await createHTContract();
-      console.log(reportID);
       const report = await contract.medicalReports(Number(reportID));
       const doc = await contract.doctors(address);
 
@@ -207,7 +198,6 @@ export default () => {
 
   const handleChange = (event) => {
     setReportID(event.target.value);
-    // getPatientCondition();
     setSummary("");
     setPatientCondition("");
     setPervSummary("");

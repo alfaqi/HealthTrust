@@ -69,14 +69,14 @@ export default () => {
       handleErrors(error);
     }
   };
-  let doctorRespond;
   const getReportByID = async (ID) => {
     if (!ID) return;
     setErrorMessage();
     setDecodePD("");
     try {
-      const contract = await createHTContract();
+      let doctorRespond;
 
+      const contract = await createHTContract();
       const report = await contract.medicalReports(ID);
       const msg1 = await contract.decodeMedical(ID, address, report[2]);
       if (report[3] != "0x") {
@@ -89,7 +89,6 @@ export default () => {
           ? doctorRespond[2]
           : "The doctor didn't see yours, please be patient.."
       );
-      // uploadToIPFS();
     } catch (error) {
       handleErrors(error);
     }
@@ -108,7 +107,6 @@ export default () => {
   useEffect(() => {
     const AccountAddress = localStorage.getItem("AccountAddress");
     setAddress(AccountAddress);
-    // getReportByPatientAddress();
   }, []);
 
   return (

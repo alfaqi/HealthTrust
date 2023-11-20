@@ -113,13 +113,13 @@ export default () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <Button
-            className="mt-2 p-3 bg-slate-200 hover:bg-slate-400"
+          <button
+            className="mt-2 p-3 bg-slate-200 hover:bg-slate-400 rounded"
             onClick={handleLogin}
             disabled={waiting}
           >
-            <Login />
-          </Button>
+            <Login color="info" />
+          </button>
         </div>
       </div>
     </Grow>

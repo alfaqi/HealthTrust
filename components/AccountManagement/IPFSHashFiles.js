@@ -4,12 +4,28 @@ import {
   createHTContractIPFS,
 } from "../../Constants/contractUtils";
 import Link from "next/link";
-import { Grow, Paper } from "@mui/material";
+import { Alert, Grow, Paper } from "@mui/material";
 import EnsAvatar from "../EnsAvatar";
 
 export default () => {
   const [address, setAddress] = useState("");
   const [allFiles, setAllFiles] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleErrors = (error, message) => {
+    setErrorMessage(message);
+    console.log(error);
+    console.log(message);
+    if (!error) return;
+
+    if (error.message.toLowerCase().includes("user rejected")) {
+      setErrorMessage(
+        "MetaMask Tx Signature: User denied transaction signature"
+      );
+    } else {
+      setErrorMessage("Error occurred while processing.");
+    }
+  };
   useEffect(() => {
     const handleGetAllMembers = async () => {
       try {
@@ -37,6 +53,11 @@ export default () => {
   return (
     <Grow in={true} style={{ transformOrigin: "0 0 0" }} timeout={1000}>
       <div className="container h-screen">
+        {errorMessage && (
+          <Alert onClose={() => setErrorMessage("")} severity="error">
+            {errorMessage}
+          </Alert>
+        )}
         <div className="flex flex-row items-center justify-center gap-2 p-2 m-2">
           <div className="flex flex-col p-2 m-2">
             <EnsAvatar address={address} size={100} />

@@ -121,7 +121,7 @@ export default () => {
             disabled={waiting}
             onClick={handleCreateAccount}
           >
-            <p className="font-bold text-black">Generate Address</p>
+            <p className="font-bold text-black">Create new Address</p>
           </Button>
         </div>
       </div>

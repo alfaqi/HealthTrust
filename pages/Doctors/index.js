@@ -9,14 +9,6 @@ import SkeletonImageModal from "../../components/Modals/SkeletonImageModal";
 import Chat from "../../components/Chat/Chat";
 
 export default () => {
-  // const doctor = [
-  //   "0xB72AB84f684537F992E9D9d1ef6cAdb03854f148",
-  //   "General",
-  //   "5",
-  //   "5",
-  //   "5",
-  //   "",
-  // ];
   const router = useRouter();
   const [doctor, setDoctor] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -43,11 +35,7 @@ export default () => {
 
   useEffect(() => {
     const { id } = router.query;
-    console.log(id);
     if (!id) {
-      // alert(
-      //   "Sorry, no doctor was found with this address. Please ensure it's correct and try again."
-      // );
       router.push("/Register");
       return;
     }

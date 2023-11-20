@@ -9,14 +9,10 @@ export default () => {
       const contract = await createHTContract();
       const doc = await contract.doctors(AccountAddress);
       if (doc[0] == "0x0000000000000000000000000000000000000000") {
-        // setTimeout(() => {
         router.push("/Register");
-        // }, 2000);
         return;
       } else {
-        // setTimeout(() => {
         router.push("/Reports");
-        // }, 2000);
       }
     } catch (e) {
       console.log(e);
