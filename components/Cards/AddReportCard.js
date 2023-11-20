@@ -47,6 +47,8 @@ export default () => {
       setErrorMessage(
         "MetaMask Tx Signature: User denied transaction signature"
       );
+    } else if (error.message.toLowerCase().includes("patient or doctor")) {
+      setErrorMessage("Only Patient or Doctor can view this report!");
     } else {
       setErrorMessage("Error occurred while processing.");
     }
@@ -311,10 +313,10 @@ export default () => {
               </Button>
             </div>
           </div>
-          {patientAddress && amountPaid && (
+          {patientAddress && (
             <div className="flex gap-2 m-2">
               <p>Patient Address: {patientAddress}</p>
-              <p>Amount Paid: {amountPaid.toString()} Tọ̀rọ̀</p>
+              {amountPaid && <p>Amount Paid: {amountPaid.toString()} Tọ̀rọ̀</p>}
             </div>
           )}
           <TextField
