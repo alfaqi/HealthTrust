@@ -132,62 +132,62 @@ export default () => {
           <div className="flex flex-col items-center">
             <p>First: Generate New Livestream</p>
             <Tooltip title="Generate new livestream">
-              <Button
-                className="m-1 p-3 bg-slate-200 hover:bg-slate-400"
+              <button
+                className="m-1 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={createStream}
                 disabled={isLoading}
               >
-                <WifiProtectedSetup />
-              </Button>
+                <WifiProtectedSetup color="info" />
+              </button>
             </Tooltip>
           </div>
           <div className="flex flex-col items-center">
             <p>Second: Save the Livestream</p>
             <Tooltip title="Save new livestream keys">
-              <Button
-                className="m-1 p-3 bg-slate-200 hover:bg-slate-400"
+              <button
+                className="m-1 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={handleAddLive}
                 disabled={isLoading}
               >
-                <AddCircle />
-              </Button>
+                <AddCircle color="info" />
+              </button>
             </Tooltip>
           </div>
 
           <div className="flex flex-col items-center">
             <p>Get the Keys</p>
             <Tooltip title="Get livestream keys">
-              <Button
-                className="m-1 p-3 bg-slate-200 hover:bg-slate-400"
+              <button
+                className="m-1 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={handelGetLive}
                 disabled={isLoading}
               >
-                <GetApp />
-              </Button>
+                <GetApp color="info" />
+              </button>
             </Tooltip>
           </div>
           <div className="flex flex-col items-center">
             <p>Goto Live with patients</p>
             <Tooltip title="Goto Livestream">
-              <Button
-                className="m-1 p-3 bg-slate-200 hover:bg-slate-400"
+              <button
+                className="m-1 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={handelGotoLive}
                 disabled={isLoading}
               >
-                <OpenInNew />
-              </Button>
+                <OpenInNew color="info" />
+              </button>
             </Tooltip>
           </div>
           <div className="flex flex-col items-center">
             <p>Delete Livestream</p>
             <Tooltip title="Delete livestream">
-              <Button
-                className="m-1 p-3 bg-slate-200 hover:bg-slate-400"
+              <button
+                className="m-1 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={handleDeleteLive}
                 disabled={isLoading}
               >
                 <RemoveCircle color="error" />
-              </Button>
+              </button>
             </Tooltip>
           </div>
         </div>
