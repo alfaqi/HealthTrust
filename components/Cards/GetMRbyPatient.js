@@ -69,13 +69,13 @@ export default () => {
       handleErrors(error);
     }
   };
+
+  let doctorRespond;
   const getReportByID = async (ID) => {
     if (!ID) return;
     setErrorMessage();
     setDecodePD("");
     try {
-      let doctorRespond;
-
       const contract = await createHTContract();
       const report = await contract.medicalReports(ID);
       const msg1 = await contract.decodeMedical(ID, address, report[2]);
@@ -197,12 +197,12 @@ export default () => {
               {!doctorRespond && (
                 <div>
                   <Tooltip title="Download Report">
-                    <Button
-                      className="m-1 p-3 bg-slate-200 hover:bg-slate-400"
+                    <button
+                      className="m-1 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                       onClick={downloadReport}
                     >
-                      <CloudDownload />
-                    </Button>
+                      <CloudDownload color="info" />
+                    </button>
                   </Tooltip>
                   <UploadFileToIPFSModal
                     address={decodeDDAddress}

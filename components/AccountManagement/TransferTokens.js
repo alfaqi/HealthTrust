@@ -125,13 +125,13 @@ export default () => {
               onChange={(e) => setAmount(e.target.value)}
             />
             <div className="flex justify-center">
-              <Button
-                className="mt-2 p-3 bg-slate-200 hover:bg-slate-400"
+              <button
+                className="mt-2 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={handleTransfer}
                 disabled={waiting}
               >
-                <MoveDown />
-              </Button>
+                <MoveDown color="info" />
+              </button>
             </div>
           </div>
         </div>

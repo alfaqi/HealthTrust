@@ -136,13 +136,13 @@ export default () => {
               <MenuItem value={"remove"}>Remove</MenuItem>
             </Select>
           </FormControl>
-          <Button
-            className="mt-2 p-3 bg-slate-200 hover:bg-slate-400"
+          <button
+            className="mt-2 p-3 bg-slate-200 hover:bg-slate-400 rounded"
             onClick={handleConfirm}
             disabled={isLoading}
           >
-            <Save />
-          </Button>
+            <Save color="info" />
+          </button>
           <Button
             onClick={handleGetAllMembers}
             className="w-72 p-2 mt-2 button "

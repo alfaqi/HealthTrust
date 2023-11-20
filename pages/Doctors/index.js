@@ -74,18 +74,18 @@ export default () => {
               <p> {doctor[1]}</p>
             </div>
             <div className="flex flex-row justify-center p-1 m-1">
-              <Button
+              <button
+                className="m-1 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={() => setChat(!chat)}
-                className="m-1 p-3 bg-slate-200 hover:bg-slate-400"
               >
-                <Message />
-              </Button>
-              <Button
+                <Message color="info" />
+              </button>
+              <button
+                className="m-1 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={handleGotoLive}
-                className="m-1 p-3 bg-slate-200 hover:bg-slate-400"
               >
-                <VideoCall />
-              </Button>
+                <VideoCall color="info" />
+              </button>
             </div>
             <div>
               <div className="flex ">

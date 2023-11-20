@@ -60,6 +60,8 @@ export default () => {
       }, 5000);
     } catch (error) {
       handleErrors(error);
+    } finally {
+      setWaiting(false);
     }
   };
   useEffect(() => {

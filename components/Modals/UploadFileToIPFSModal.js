@@ -40,13 +40,13 @@ export default ({ address, recordId, uploadFile }) => {
 
   return (
     <Tooltip title="Upload Report to IPFS">
-      <Button
-        className="m-1 p-3 bg-slate-200 hover:bg-slate-400"
+      <button
+        className="m-1 p-3 bg-slate-200 hover:bg-slate-400 rounded"
         onClick={uploadToIPFS}
         disabled={waiting}
       >
-        <CloudUpload />
-      </Button>
+        <CloudUpload color="info" />
+      </button>
     </Tooltip>
   );
 };

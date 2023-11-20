@@ -55,12 +55,14 @@ export default () => {
       setSuccessMessage(tr.data.message);
       localStorage.setItem("pwd", password);
 
-      setOldPassword("");
-      setPassword("");
-      setPassword2("");
+      // setOldPassword("");
+      // setPassword("");
+      // setPassword2("");
       setWaiting(false);
     } catch (error) {
       handleErrors(error);
+    } finally {
+      setWaiting(false);
     }
   };
   useEffect(() => {
@@ -117,13 +119,13 @@ export default () => {
               onChange={(e) => setPassword2(e.target.value)}
             />
             <div className="flex justify-center">
-              <Button
-                className="mt-2 p-3 bg-slate-200 hover:bg-slate-400"
+              <button
+                className="mt-2 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={handleChangePWD}
                 disabled={waiting}
               >
-                <Save />
-              </Button>
+                <Save color="info" />
+              </button>
             </div>
           </div>
           <div className="flex flex-col p-2 m-2">

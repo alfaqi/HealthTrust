@@ -353,13 +353,13 @@ export default () => {
                 rows={4}
                 onChange={(e) => setSummary(e.target.value)}
               />
-              <Button
-                className="mt-2 p-3 bg-slate-200 hover:bg-slate-400"
+              <button
+                className="mt-2 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={handleConfirm}
                 disabled={isLoading}
               >
-                <Save />
-              </Button>
+                <Save color="info" />
+              </button>
             </>
           )}
         </div>

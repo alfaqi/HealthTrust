@@ -42,6 +42,8 @@ export default () => {
       setWaiting(false);
     } catch (error) {
       handleErrors(error);
+    } finally {
+      setWaiting(false);
     }
   };
   useEffect(() => {
@@ -71,13 +73,13 @@ export default () => {
               onChange={(e) => setAddress(e.target.value)}
             />
             <div className="flex justify-center">
-              <Button
-                className="mt-2 p-3 bg-slate-200 hover:bg-slate-400"
+              <button
+                className="mt-2 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={handleBalance}
                 disabled={waiting}
               >
-                <AccountBalanceWallet />
-              </Button>
+                <AccountBalanceWallet color="info" />
+              </button>
             </div>
             <p className="text-base p-2 m-2">
               Your balance is:{" "}

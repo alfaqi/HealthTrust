@@ -199,13 +199,13 @@ export default () => {
               </p>
             </div>
             <div>
-              <Button
-                className="w-52 m-2 p-3 bg-slate-200 hover:bg-slate-400"
+              <button
+                className="w-52 m-2 p-3 bg-slate-200 hover:bg-slate-400 rounded"
                 onClick={handleRegister}
                 disabled={waiting}
               >
                 <p className="font-bold text-black">Register</p>
-              </Button>
+              </button>
             </div>
           </div>
         )}
