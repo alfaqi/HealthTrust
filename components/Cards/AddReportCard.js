@@ -272,6 +272,7 @@ export default () => {
                   value={reportID}
                   label="Report ID"
                   onChange={handleChange}
+                  className="w-52"
                 >
                   {reportsIDs?.map((report, i) => {
                     return (
@@ -288,6 +289,7 @@ export default () => {
                   value={reportID}
                   label="New Report Request"
                   onChange={handleChange}
+                  className="w-52"
                 >
                   {newRequest?.map((report, i) => {
                     return (
