@@ -78,18 +78,18 @@ contract HealthTrust is Ownable {
     );
 
     // Modifier to restrict functions to only doctors
-    modifier onlyDoctor() {
+    modifier onlyDoctor(address account) {
         require(
-            doctors[msg.sender].doctorAddress != address(0),
+            doctors[account].doctorAddress != address(0),
             "Only doctors can perform this action"
         );
         _;
     }
 
     // Modifier to restrict functions to only admins
-    modifier onlyAdmin() {
+    modifier onlyAdmin(address account) {
         require(
-            admins[msg.sender].adminAddress != address(0),
+            admins[account].adminAddress != address(0),
             "Only admins can perform this action"
         );
         _;
@@ -202,12 +202,14 @@ contract HealthTrust is Ownable {
 
     /**
      * @dev Function for a patient to request a medical report from a doctor.
+     * @param address _patientAddress Address of the patient.
      * @param _doctorAddress Address of the doctor.
      * @param _dateOfBirth Date of birth of the patient.
      * @param _patientCondition Condition description provided by the patient.
      * @param _amount Payment amount for the medical report.
      */
     function requestMedicalReport(
+        address _patientAddress,
         address _doctorAddress,
         uint256 _dateOfBirth,
         string memory _patientCondition,
@@ -218,7 +220,7 @@ contract HealthTrust is Ownable {
             "Doctor not found"
         );
 
-        Patient storage patient = patients[msg.sender];
+        Patient storage patient = patients[_patientAddress];
         reportCount++;
 
         require(
@@ -230,7 +232,7 @@ contract HealthTrust is Ownable {
         newReport.reportId = reportCount;
         newReport.issueDate = block.timestamp;
         newReport.doctorAddress = _doctorAddress;
-        newReport.patientAddress = msg.sender;
+        newReport.patientAddress = _patientAddress;
         newReport.summaryHash = "";
         newReport.amount += _amount;
         newReport.paid = true;
@@ -243,12 +245,12 @@ contract HealthTrust is Ownable {
 
         newReport.patientCondition = patientConditionHash;
         if (patient.patientAddress == address(0)) {
-            patient.patientAddress = msg.sender;
+            patient.patientAddress = _patientAddress;
             patient.dateOfBirth = _dateOfBirth;
             patient.lastVisitDate = block.timestamp;
         }
 
-        emit MedicalReportRequested(reportCount, msg.sender, _amount);
+        emit MedicalReportRequested(reportCount, _patientAddress, _amount);
     }
 
     /**
@@ -260,7 +262,8 @@ contract HealthTrust is Ownable {
     function submitMedicalReport(
         uint256 _reportId,
         string memory _summary,
-        address _patientAddress
+        address _patientAddress,
+        address _doctorAddress
     ) public onlyDoctor {
         MedicalReport storage report = medicalReports[_reportId];
 
@@ -278,7 +281,7 @@ contract HealthTrust is Ownable {
         report.issueDate = block.timestamp;
         report.summaryHash = summaryHash;
 
-        emit MedicalReportSubmitted(_reportId, msg.sender);
+        emit MedicalReportSubmitted(_reportId, _doctorAddress);
     }
 
     /**
@@ -291,6 +294,7 @@ contract HealthTrust is Ownable {
      */
     function decodeMedical(
         uint256 _reportID,
+        address _address,
         bytes calldata summaryHash
     )
         external
@@ -298,8 +302,8 @@ contract HealthTrust is Ownable {
         returns (uint256 reportID, address _address, string memory _summary)
     {
         require(
-            msg.sender == medicalReports[_reportID].patientAddress ||
-                doctors[msg.sender].doctorAddress != address(0),
+            _address == medicalReports[_reportID].patientAddress ||
+                doctors[_address].doctorAddress != address(0),
             "Access restricted"
         );
 
@@ -346,9 +350,12 @@ contract HealthTrust is Ownable {
      * @param _reportID ID of the medical report.
      * @return Boolean indicating the success of the withdrawal.
      */
-    function withdraw(uint256 _reportID) external returns (bool) {
+    function withdraw(
+        uint256 _reportID,
+        address _doctorAddress
+    ) external returns (bool) {
         require(
-            medicalReports[_reportID].doctorAddress == msg.sender,
+            medicalReports[_reportID].doctorAddress == _doctorAddress,
             "Only doctor can withdraw"
         );
         require(
