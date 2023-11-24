@@ -141,7 +141,7 @@ export default () => {
   }, [errorMessage, successMessage]);
   return (
     <Grow in={true} style={{ transformOrigin: "0 0 0" }} timeout={1000}>
-      <div className="container h-screen">
+      <div className="container h-screen min-[320px]:h-full min-[320px]:w-full">
         {errorMessage && (
           <Alert onClose={() => setErrorMessage("")} severity="error">
             {errorMessage}
@@ -170,7 +170,7 @@ export default () => {
             <p className="p-2 m-2">Specialization: {doctor[1]}</p>
 
             <TextField
-              className="w-[50vw] p-2 m-2"
+              className="w-[50vw] p-2 m-2  min-[320px]:w-80"
               multiline
               placeholder="What do you feel?..."
               value={feeling}

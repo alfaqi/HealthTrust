@@ -80,7 +80,7 @@ export default () => {
   return (
     <nav
       id="navbar-main"
-      className="navbar-transparent headroom head flex flex-row justify-between items-center fixed px-8"
+      className="navbar-transparent headroom head flex flex-row justify-between items-center fixed md:px-8 sm:px-2"
     >
       <Link href="/">
         <h1 className="py-4 px-4 font-bold text-3xl">HealthTrust</h1>

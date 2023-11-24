@@ -76,7 +76,7 @@ export default () => {
   };
 
   return (
-    <div className="h-screen">
+    <div className="h-screen sm:h-full">
       {isLoading ? (
         <div className="flex flex-col">
           <div className="flex justify-center p-2 m-2">
@@ -126,7 +126,7 @@ export default () => {
               className="p-2"
               container
               spacing={{ xs: 2, md: 3 }}
-              columns={{ xs: 4, sm: 8, md: 12 }}
+              columns={{ xs: 2, sm: 4, md: 8 }}
             >
               {(doctors ? doctors : docBySpecialization).map((doctor, i) => {
                 return (
